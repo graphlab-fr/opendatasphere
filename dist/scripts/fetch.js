@@ -20,24 +20,12 @@ Promise.all([
                     // entite metas
                     id: entite.id,
                     label: entite.label,
-                    title: (entite.titre || ''),
-                    title_fr: (entite.titre || ''),
-                    title_en: (entite.titre_en || ''),
-                    group: entite.relation_otlet,
-                    image: './assets/photos/' + entite.photo,
-                    genre: entite.genre,
-                    annee_naissance: entite.annee_naissance,
-                    annee_mort: entite.annee_mort,
-                    pays: entite.pays,
-                    pays_fr: entite.pays,
-                    pays_en: entite.pays_en,
-                    domaine: entite.domaine,
-                    domaine_fr: entite.domaine,
-                    domaine_en: entite.domaine_en,
+                    title: entite.title,
+                    group: entite.categorie,
+                    image: './assets/images/' + entite.image,
+                    categorie: entite.type,
                     description: entite.description,
-                    description_fr: entite.description,
-                    description_en: entite.description_en,
-                    lien_wikipedia: entite.lien_wikipedia,
+                    lien: entite.lien,
         
                     // node style
                     size : 30,
@@ -47,7 +35,7 @@ Promise.all([
                     interaction: {hover: true},
                     hidden: false,
                     font: {
-                        face: 'Open Sans',
+                        face: 'Roboto',
                         size: 22,
                         color: '#fff',
                         strokeWidth: 2,
@@ -77,9 +65,7 @@ Promise.all([
                     id: lien.id,
                     from: lien.from,
                     to: lien.to,
-                    title: lien.label,
-                    title_fr: lien.label,
-                    title_en: lien.label_en
+                    title: lien.title,
                 };
 
                 if (lien.from == 1 || lien.to == 1) {

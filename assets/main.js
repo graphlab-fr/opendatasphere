@@ -150,24 +150,12 @@ Promise.all([
                     // entite metas
                     id: entite.id,
                     label: entite.label,
-                    title: (entite.titre || ''),
-                    title_fr: (entite.titre || ''),
-                    title_en: (entite.titre_en || ''),
-                    group: entite.relation_otlet,
-                    image: './assets/photos/' + entite.photo,
-                    genre: entite.genre,
-                    annee_naissance: entite.annee_naissance,
-                    annee_mort: entite.annee_mort,
-                    pays: entite.pays,
-                    pays_fr: entite.pays,
-                    pays_en: entite.pays_en,
-                    domaine: entite.domaine,
-                    domaine_fr: entite.domaine,
-                    domaine_en: entite.domaine_en,
+                    title: entite.title,
+                    group: entite.categorie,
+                    image: './assets/images/' + entite.image,
+                    categorie: entite.type,
                     description: entite.description,
-                    description_fr: entite.description,
-                    description_en: entite.description_en,
-                    lien_wikipedia: entite.lien_wikipedia,
+                    lien: entite.lien,
         
                     // node style
                     size : 30,
@@ -177,7 +165,7 @@ Promise.all([
                     interaction: {hover: true},
                     hidden: false,
                     font: {
-                        face: 'Open Sans',
+                        face: 'Roboto',
                         size: 22,
                         color: '#fff',
                         strokeWidth: 2,
@@ -207,9 +195,7 @@ Promise.all([
                     id: lien.id,
                     from: lien.from,
                     to: lien.to,
-                    title: lien.label,
-                    title_fr: lien.label,
-                    title_en: lien.label_en
+                    title: lien.title,
                 };
 
                 if (lien.from == 1 || lien.to == 1) {
@@ -234,13 +220,11 @@ var fiche = {
     toggle: document.querySelector('#fiche-toggle'),
     isOpen: false,
     fields: {
-        wikiLink: document.querySelector('#fiche-wiki-link'),
+        lien: document.querySelector('#fiche-meta-lien'),
         img: document.querySelector('#fiche-meta-img'),
         label: document.querySelector('#fiche-meta-label'),
-        date: document.querySelector('#fiche-meta-date'),
-        titre: document.querySelector('#fiche-meta-titre'),
-        pays: document.querySelector('#fiche-meta-pays'),
-        domaine: document.querySelector('#fiche-meta-domaine'),
+        title: document.querySelector('#fiche-meta-title'),
+        categorie: document.querySelector('#fiche-meta-categorie'),
         description: document.querySelector('#fiche-meta-description'),
         connexion: document.querySelector('#fiche-connexion'),
         permalien: document.querySelector('#fiche-permalien')
@@ -270,34 +254,13 @@ var fiche = {
         this.fields.img.setAttribute('src', entitePhoto);
         this.fields.img.setAttribute('alt', 'photo de ' + entiteLabel);
     },
-    setDates: function(entiteDateNaissance, entiteDateMort) {
-        if (entiteDateNaissance === null && entiteDateMort === null) {
-            this.fields.date.innerHTML = '';
-            return;
-        }
-
-        let naissance = '';
-        let mort = '';
-
-        if (entiteDateNaissance !== null) {
-            naissance = '<div class="fiche__dates"><time class="" datetime="' 
-                + entiteDateNaissance + '">' + entiteDateNaissance + '</time>';
-        }
-
-        if (entiteDateMort !== null) {
-            mort = ' - <time  datetime="' + entiteDateMort + '">' +
-                entiteDateMort + '</time><div>';
-        }
-
-        this.fields.date.innerHTML = [naissance, mort].join('');
-    },
-    setWikiLink: function(wikiLink) {
-        if (wikiLink === null) {
-            this.fields.wikiLink.classList.remove('fiche__wiki-link--visible')
-            this.fields.wikiLink.setAttribute('href', '')
+    setLink: function(lien) {
+        if (lien === null) {
+            this.fields.lien.classList.remove('fiche__lien--visible')
+            this.fields.lien.setAttribute('href', '')
         } else {
-            this.fields.wikiLink.classList.add('fiche__wiki-link--visible')
-            this.fields.wikiLink.setAttribute('href', wikiLink)
+            this.fields.lien.classList.add('fiche__lien--visible')
+            this.fields.lien.setAttribute('href', lien)
         }
     },
     setMeta: function(meta, content) {
@@ -381,12 +344,10 @@ var fiche = {
 
         // remplissage métadonnées
         this.setMeta(nodeMetas.label, this.fields.label);
-        this.setMeta(nodeMetas.title, this.fields.titre);
+        this.setMeta(nodeMetas.title, this.fields.title);
         this.setImage(nodeMetas.image, nodeMetas.label);
-        this.setDates(nodeMetas.annee_naissance, nodeMetas.annee_mort);
-        this.setWikiLink(nodeMetas.lien_wikipedia);
-        this.setMeta(nodeMetas.pays, this.fields.pays);
-        this.setMeta(nodeMetas.domaine, this.fields.domaine);
+        this.setLink(nodeMetas.lien);
+        this.setMeta(nodeMetas.categorie, this.fields.categorie);
         this.setMeta(nodeMetas.description, this.fields.description);
         this.setPermaLink(network.selectedNode);
 
@@ -586,15 +547,15 @@ var network = {
             }
         },
         groups: {
-            collegue: {shape: 'circularImage', color: {border: chooseColor('collegue')}},
-            collaborateur: {shape: 'circularImage', color: {border: chooseColor('collaborateur')}},
-            famille: {shape: 'circularImage', color: {border: chooseColor('famille')}},
-            opposant: {shape: 'circularImage', color: {border: chooseColor('opposant')}},
-            otlet: {shape: 'circularImage', color: {border: chooseColor('otlet')}},
-            'non-catégorisé': {shape: 'circularImage', color: {border: chooseColor('non-catégorisé')}},
-            institution: {shape: 'image', color: {border: chooseColor('institution')}},
-            œuvre: {shape: 'image', color: {border: chooseColor('œuvre')}},
-            évènement: {shape: 'image', color: {border: chooseColor('évènement')}}
+        		public: {shape: 'circularImage', color: {border: chooseColor('public')}},
+        		juridique: {shape: 'circularImage', color: {border: chooseColor('juridique')}},
+        		geographique: {shape: 'circularImage', color: {border: chooseColor('geographique')}},
+        		scientifique: {shape: 'circularImage', color: {border: chooseColor('scientifique')}},
+        		autre: {shape: 'circularImage', color: {border: chooseColor('autre')}}
+            //personne: {shape: 'image', color: {border: chooseColor('personne')}},
+            //organisme_public: {shape: 'image', color: {border: chooseColor('organisme_public')}},
+            //organisme_prive: {shape: 'image', color: {border: chooseColor('organisme_prive')}},
+            //outil: {shape: 'image', color: {border: chooseColor('outil')}}
         },
         interaction: {hover:true}
     },
@@ -646,10 +607,10 @@ var network = {
                 network.data.nodes.map(entite => ({
                     id: entite.id,
                     color: chooseColor(entite.group, true),
-                    opacity: 0.4,
+                    opacity: 1,
                     font: {
-                        color: 'rgba(255, 255, 255, 0.5)',
-                        strokeColor: 'rgba(0, 0, 0, 0.5)'
+                        color: 'rgba(255, 255, 255, 1)',
+                        strokeColor: 'rgba(0, 0, 0, 1)'
                     }
                 } ), {
                     filter: function(entite) {
@@ -717,26 +678,26 @@ var network = {
 
 function chooseColor(relationEntite, lowerOpacity = false) {
     switch (relationEntite) {
-        case 'collegue':
-            var color = '154, 60, 154'; break;
-        case 'collaborateur':
-            var color = '97, 172, 97'; break;
-        case 'opposant':
-            var color = '250, 128, 114'; break;
-        case 'famille':
-            var color = '102, 179, 222'; break;
-        case 'otlet':
-            var color = '244, 164, 96'; break;
-        case 'non-catégorisé':
+        case 'public':
+            var color = '0,176,215'; break;
+        case 'juridique':
+            var color = '216,115,186'; break;
+        case 'geographique':
+            var color = '82,170,68'; break;
+        case 'scientifique':
+            var color = '230,97,0'; break;
+        case 'autre':
             var color = '128,128,128'; break;
-        case 'institution':
-            var color = '128,128,128'; break;
-        case 'œuvre':
-            var color = '128,128,128'; break;
-        case 'évènement':
-            var color = '128,128,128'; break;
+     //case 'personne':
+     //    var color = '154, 60, 154'; break;
+     //case 'organisme_public':
+     //    var color = '97, 172, 97'; break;
+     //case 'organisme_prive':
+     //    var color = '250, 128, 114'; break;
+     //case 'outil':
+     //    var color = '102, 179, 222'; break;
     }
-    if (lowerOpacity) { return ['rgba(', color, ', 0.4)'].join(''); }
+    if (lowerOpacity) { return ['rgba(', color, ', 1)'].join(''); }
     else { return ['rgb(', color, ')'].join(''); }
 }
 
@@ -789,7 +750,7 @@ function switchNode(nodeId, mustZoom = true) {
     network.selectedNode = Number(nodeId);
 
     // renommer la page web
-    document.title = nodeMetas.label + ' - Otetosphère';
+    document.title = nodeMetas.label + ' - OpenDataSphère';
 
     if (mustZoom) {zoomToNode(nodeId);}
 
@@ -872,86 +833,6 @@ var search = {
 }
 
 search.reset();
-var langage = {
-    flags: [document.querySelector('#lang-fr'), document.querySelector('#lang-en')],
-    actual: 'Fr',
-    translateAll: function() {
-        document.querySelectorAll('[data-lang-' + langage.actual.toLowerCase() + ']').forEach(elt => {
-            eval('elt.innerHTML = elt.dataset.lang' + langage.actual);
-        });
-    }
-}
-
-// active actual langage button
-document.querySelector('[data-lang="' + langage.actual + '"]')
-    .classList.add('lang-box__flag--active');
-
-langage.flags.forEach(flag => {
-    flag.addEventListener('click', (e) => {
-        var flagCliked = e.target;
-        
-        if (flagCliked.dataset.lang == langage.actual) {
-            // si le bouton flag cliqué active la langue déjà active
-            return;
-        }
-
-        // désactiver la surbrillance du flag de la précédante langue
-        document.querySelector('[data-lang="' + langage.actual + '"]')
-            .classList.remove('lang-box__flag--active');
-        // activer la surbrillance du flag de l'actuelle langue
-        flagCliked.classList.add('lang-box__flag--active');
-
-        langage.actual = flagCliked.dataset.lang;
-
-        langage.translateAll();
-
-        switch (langage.actual) {
-            case 'Fr':
-                network.data.nodes.update(
-                    network.data.nodes.map(entite => ({
-                            id: entite.id,
-                            title: entite.title_fr,
-                            description: entite.description_fr,
-                            domaine: entite.domaine_fr,
-                            pays: entite.pays_fr,
-                        })
-                    )
-                );
-                network.data.edges.update(
-                    network.data.edges.map(lien => ({
-                            id: lien.id,
-                            title: lien.title_fr,
-                        })
-                    )
-                );
-            break;
-
-            case 'En':
-                network.data.nodes.update(
-                    network.data.nodes.map(entite => ({
-                            id: entite.id,
-                            title: entite.title_en,
-                            description: entite.description_en,
-                            domaine: entite.domaine_en,
-                            pays: entite.pays_en,
-                        })
-                    )
-                );
-                network.data.edges.update(
-                    network.data.edges.map(lien => ({
-                            id: lien.id,
-                            title: lien.title_en,
-                        })
-                    )
-                );
-            break;
-        }
-
-        fiche.fill();
-        board.init();
-
-    });
-});
 var zoom = {
     btnPlus: document.querySelector('#zoom-plus'),
     btnMoins: document.querySelector('#zoom-moins'),

@@ -25,15 +25,15 @@ var network = {
             }
         },
         groups: {
-            collegue: {shape: 'circularImage', color: {border: chooseColor('collegue')}},
-            collaborateur: {shape: 'circularImage', color: {border: chooseColor('collaborateur')}},
-            famille: {shape: 'circularImage', color: {border: chooseColor('famille')}},
-            opposant: {shape: 'circularImage', color: {border: chooseColor('opposant')}},
-            otlet: {shape: 'circularImage', color: {border: chooseColor('otlet')}},
-            'non-catégorisé': {shape: 'circularImage', color: {border: chooseColor('non-catégorisé')}},
-            institution: {shape: 'image', color: {border: chooseColor('institution')}},
-            œuvre: {shape: 'image', color: {border: chooseColor('œuvre')}},
-            évènement: {shape: 'image', color: {border: chooseColor('évènement')}}
+        		public: {shape: 'circularImage', color: {border: chooseColor('public')}},
+        		juridique: {shape: 'circularImage', color: {border: chooseColor('juridique')}},
+        		geographique: {shape: 'circularImage', color: {border: chooseColor('geographique')}},
+        		scientifique: {shape: 'circularImage', color: {border: chooseColor('scientifique')}},
+        		autre: {shape: 'circularImage', color: {border: chooseColor('autre')}}
+            //personne: {shape: 'image', color: {border: chooseColor('personne')}},
+            //organisme_public: {shape: 'image', color: {border: chooseColor('organisme_public')}},
+            //organisme_prive: {shape: 'image', color: {border: chooseColor('organisme_prive')}},
+            //outil: {shape: 'image', color: {border: chooseColor('outil')}}
         },
         interaction: {hover:true}
     },
@@ -85,10 +85,10 @@ var network = {
                 network.data.nodes.map(entite => ({
                     id: entite.id,
                     color: chooseColor(entite.group, true),
-                    opacity: 0.4,
+                    opacity: 1,
                     font: {
-                        color: 'rgba(255, 255, 255, 0.5)',
-                        strokeColor: 'rgba(0, 0, 0, 0.5)'
+                        color: 'rgba(255, 255, 255, 1)',
+                        strokeColor: 'rgba(0, 0, 0, 1)'
                     }
                 } ), {
                     filter: function(entite) {
@@ -156,26 +156,26 @@ var network = {
 
 function chooseColor(relationEntite, lowerOpacity = false) {
     switch (relationEntite) {
-        case 'collegue':
-            var color = '154, 60, 154'; break;
-        case 'collaborateur':
-            var color = '97, 172, 97'; break;
-        case 'opposant':
-            var color = '250, 128, 114'; break;
-        case 'famille':
-            var color = '102, 179, 222'; break;
-        case 'otlet':
-            var color = '244, 164, 96'; break;
-        case 'non-catégorisé':
+        case 'public':
+            var color = '0,176,215'; break;
+        case 'juridique':
+            var color = '216,115,186'; break;
+        case 'geographique':
+            var color = '82,170,68'; break;
+        case 'scientifique':
+            var color = '230,97,0'; break;
+        case 'autre':
             var color = '128,128,128'; break;
-        case 'institution':
-            var color = '128,128,128'; break;
-        case 'œuvre':
-            var color = '128,128,128'; break;
-        case 'évènement':
-            var color = '128,128,128'; break;
+     //case 'personne':
+     //    var color = '154, 60, 154'; break;
+     //case 'organisme_public':
+     //    var color = '97, 172, 97'; break;
+     //case 'organisme_prive':
+     //    var color = '250, 128, 114'; break;
+     //case 'outil':
+     //    var color = '102, 179, 222'; break;
     }
-    if (lowerOpacity) { return ['rgba(', color, ', 0.4)'].join(''); }
+    if (lowerOpacity) { return ['rgba(', color, ', 1)'].join(''); }
     else { return ['rgb(', color, ')'].join(''); }
 }
 
@@ -228,7 +228,7 @@ function switchNode(nodeId, mustZoom = true) {
     network.selectedNode = Number(nodeId);
 
     // renommer la page web
-    document.title = nodeMetas.label + ' - Otetosphère';
+    document.title = nodeMetas.label + ' - OpenDataSphère';
 
     if (mustZoom) {zoomToNode(nodeId);}
 

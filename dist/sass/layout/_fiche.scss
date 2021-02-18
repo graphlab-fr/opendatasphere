@@ -4,7 +4,7 @@
         overflow: auto;
         height: 100%;
         box-sizing: border-box;
-        padding: 10px;
+/*         padding: 10px; */
         visibility: hidden;
 
         &--visible {
@@ -45,9 +45,12 @@
     &__identite {
         margin-bottom: 10px;
         display: flex;
+/*         color: white; */
+/*         background-color: black; */
     }
 
     &__img {
+    		display: none;
         @extend %shadow-1;
         cursor: pointer;
         border-radius: 2px;
@@ -58,11 +61,11 @@
     }
 
     &__text-resume {
-        width: 150px;
+        padding: 10px;
     }
 
     &__label {
-        @extend %font-condensed;
+        @extend %font-mono;
         display: inline-block;
         line-height: 115%;
         font-size: 25px;
@@ -75,11 +78,11 @@
         margin-bottom: 10px;
     }
 
-    &__titre {
+    &__title {
         @extend %font-bold;
     }
 
-    &__wiki-link {
+    &__lien {
         margin-top: 15px;
         width: 30px;
         height: 30px;
@@ -100,6 +103,7 @@
         display: flex;
         align-items: center;
         margin: 10px 0;
+        padding: 10px;
     }
 
     &__cle {
@@ -115,7 +119,7 @@
 
     &__description {
         margin-top: 20px;
-        padding: 15px 0;
+        padding: 10px;
         border-top: 1px solid #d5d5d5;
         border-bottom: 1px solid #d5d5d5;
 
@@ -156,6 +160,7 @@
         display: inline-block;
         margin-top: 20px;
         font-size: 18px;
+        padding: 10px;
     }
 
     &__list {
@@ -182,4 +187,8 @@
         border-radius: 50%;
         transition: transform .1s;
     }
+}
+
+div#fiche-connexion {
+padding: 0 10px;
 }

@@ -1,13 +1,18 @@
 .toolbar {
     display: flex;
     justify-content: center;
+    
+    &__label {
+    	font-size: 1.2em;
+        align-self: center;
+    }
 
     &__section {
         display: flex;
         margin: 0 10px;
 
         &:first-child {
-            margin: 0 10px 0 0;
+            margin: 0;
         }
 
         &:last-child {

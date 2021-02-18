@@ -13,6 +13,16 @@
     &--left {
         left: 0px;
         transform: translate(-100%);
+        width: 150px;
+        background-color: transparent;
+    }
+    
+    &--left .btn-group {
+    	margin: 0;
+    }
+    &--left h3 {
+    	background-color: $color-blanc;
+    	padding: 5px;
     }
 
     &--right {

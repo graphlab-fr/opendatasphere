@@ -1,28 +1,33 @@
 @charset "UTF-8";
-body, button {
-  font-family: 'Open Sans', sans-serif;
+.title-site {
+  font-family: 'Lineal', sans-serif;
   font-weight: normal;
   font-style: normal; }
 
-.btn-group::after, .fiche__titre {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 600;
+body, button {
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+  font-style: normal; }
+
+.btn-group::after, .fiche__title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
   font-style: normal; }
 
 h2,
-h3, .btn-group, .title-site, .lang-box__flag, .lang-box__separator, .navigation__link, .fiche__cle, .connexions__libelle, .search-box__input, .command-board__btn {
-  font-family: 'Inconsolata', monospace;
+h3, .btn-group, .lang-box__flag, .lang-box__separator, .navigation__link, .fiche__label, .fiche__cle, .connexions__libelle, .search-box__input, .command-board__btn {
+  font-family: 'Syne', monospace;
   font-weight: normal;
   font-style: normal; }
 
 .title-site__bold, .lang-box__flag--active, .navigation__link--active {
-  font-family: 'Inconsolata', monospace;
-  font-weight: bold;
+  font-family: 'Syne', monospace;
+  font-weight: normal;
   font-style: normal; }
 
-.fiche__label, .search-list li, .card__label {
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-weight: 300;
+.search-list li, .card__label {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
   font-style: normal; }
 
 .lateral, .btn-group, .entete, .fiche__img, .search-box__input, .card, .card__img {
@@ -32,46 +37,34 @@ h3, .btn-group, .title-site, .lang-box__flag, .lang-box__separator, .navigation_
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
 
 @font-face {
-  font-family: 'Open Sans Condensed';
-  src: url("./font/OpenSansCondensed-Light.woff2") format("woff2"), url("./font/OpenSansCondensed-Light.woff") format("woff");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap; }
+  font-family: 'Roboto';
+  src: url("./fonts/Roboto-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal; }
 
 @font-face {
-  font-family: 'Open Sans';
-  src: url("./font/OpenSans-SemiBold.woff2") format("woff2"), url("./font/OpenSans-SemiBold.woff") format("woff");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap; }
+  font-family: 'Roboto';
+  src: url("./fonts/Roboto-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic; }
 
 @font-face {
-  font-family: 'Open Sans';
-  src: url("./font/OpenSans-Italic.woff2") format("woff2"), url("./font/OpenSans-Italic.woff") format("woff");
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap; }
+  font-family: 'Roboto';
+  src: url("./fonts/Roboto-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal; }
 
 @font-face {
-  font-family: 'Open Sans';
-  src: url("./font/OpenSans-Regular.woff2") format("woff2"), url("./font/OpenSans-Regular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap; }
+  font-family: 'Syne';
+  src: url("./fonts/Syne-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal; }
 
 @font-face {
-  font-family: 'Inconsolata';
-  src: url("./font/Inconsolata-Regular.woff2") format("woff2"), url("./font/Inconsolata-Regular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap; }
-
-@font-face {
-  font-family: 'Inconsolata';
-  src: url("./font/Inconsolata-Bold.woff2") format("woff2"), url("./font/Inconsolata-Bold.woff") format("woff");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap; }
+  font-family: 'Lineal';
+  src: url("./fonts/Lineal.woff") format("woff");
+  font-weight: 400;
+  font-style: normal; }
 
 @-webkit-keyframes valid {
   0% {
@@ -142,14 +135,21 @@ button:focus {
   position: absolute;
   width: 320px;
   top: 0px;
-  background-color: #fffcfb;
+  background-color: #d9d9d9;
   height: calc(100vh - 90px);
   z-index: 100;
   transition: transform .2s;
   transition-timing-function: cubic-bezier(0.96, 0, 0.19, 1.12); }
   .lateral--left {
     left: 0px;
-    transform: translate(-100%); }
+    transform: translate(-100%);
+    width: 150px;
+    background-color: transparent; }
+  .lateral--left .btn-group {
+    margin: 0; }
+  .lateral--left h3 {
+    background-color: #d9d9d9;
+    padding: 5px; }
   .lateral--right {
     right: 0px;
     transform: translate(100%); }
@@ -228,9 +228,12 @@ button:focus {
     margin-bottom: 10px; }
   .about__logo-list {
     display: flex;
-    flex-wrap: nowrap; }
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 2em; }
   .about__logo {
-    width: 50px;
+    height: 50px;
     margin: 10px;
     -o-object-fit: contain;
     object-fit: contain; }
@@ -259,12 +262,12 @@ button:focus {
   .entete__identite {
     cursor: pointer;
     display: flex;
-    margin-bottom: 10px; }
+    margin-bottom: 5px; }
 
 .title-site {
   margin: unset;
-  text-transform: uppercase;
-  letter-spacing: 1px; }
+  font-size: 2.5em;
+  line-height: 1; }
 
 .lang-box {
   display: flex; }
@@ -311,11 +314,14 @@ button:focus {
 .toolbar {
   display: flex;
   justify-content: center; }
+  .toolbar__label {
+    font-size: 1.2em;
+    align-self: center; }
   .toolbar__section {
     display: flex;
     margin: 0 10px; }
     .toolbar__section:first-child {
-      margin: 0 10px 0 0; }
+      margin: 0; }
     .toolbar__section:last-child {
       margin: 0 0 0 10px; }
 
@@ -323,7 +329,7 @@ button:focus {
   overflow: auto;
   height: 100%;
   box-sizing: border-box;
-  padding: 10px;
+  /*         padding: 10px; */
   visibility: hidden; }
   .fiche__content--visible {
     visibility: visible; }
@@ -354,9 +360,12 @@ button:focus {
 
 .fiche__identite {
   margin-bottom: 10px;
-  display: flex; }
+  display: flex;
+  /*         color: white; */
+  /*         background-color: black; */ }
 
 .fiche__img {
+  display: none;
   cursor: pointer;
   border-radius: 2px;
   width: 150px;
@@ -366,7 +375,7 @@ button:focus {
   object-fit: cover; }
 
 .fiche__text-resume {
-  width: 150px; }
+  padding: 10px; }
 
 .fiche__label {
   display: inline-block;
@@ -379,7 +388,7 @@ button:focus {
   padding-bottom: 7px;
   margin-bottom: 10px; }
 
-.fiche__wiki-link {
+.fiche__lien {
   margin-top: 15px;
   width: 30px;
   height: 30px;
@@ -390,13 +399,14 @@ button:focus {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 18px; }
-  .fiche__wiki-link--visible {
+  .fiche__lien--visible {
     display: flex; }
 
 .fiche__couple {
   display: flex;
   align-items: center;
-  margin: 10px 0; }
+  margin: 10px 0;
+  padding: 10px; }
 
 .fiche__cle {
   font-size: 15px;
@@ -408,7 +418,7 @@ button:focus {
 
 .fiche__description {
   margin-top: 20px;
-  padding: 15px 0;
+  padding: 10px;
   border-top: 1px solid #d5d5d5;
   border-bottom: 1px solid #d5d5d5; }
   .fiche__description::first-letter {
@@ -440,7 +450,8 @@ button:focus {
 .connexions__libelle {
   display: inline-block;
   margin-top: 20px;
-  font-size: 18px; }
+  font-size: 18px;
+  padding: 10px; }
 
 .connexions__list {
   list-style: none;
@@ -461,6 +472,9 @@ button:focus {
   margin-right: 7px;
   border-radius: 50%;
   transition: transform .1s; }
+
+div#fiche-connexion {
+  padding: 0 10px; }
 
 .search-box {
   position: relative; }
@@ -503,7 +517,7 @@ button:focus {
     cursor: pointer;
     font-size: 20px;
     padding: 5px;
-    background: #fffcfb;
+    background: #d9d9d9;
     border-top: 1px solid black; }
     .search-list li:hover {
       background-color: #ebebeb; }
@@ -525,7 +539,6 @@ button:focus {
     border: unset;
     width: 50px;
     height: 50px;
-    -webkit-filter: drop-shadow(0px 0px 10px rgba(66, 66, 66, 0.5));
     filter: drop-shadow(0px 0px 10px rgba(66, 66, 66, 0.5)); }
     .network__btn--right {
       right: 15px;
@@ -626,11 +639,12 @@ button:focus {
     display: flex;
     margin-bottom: 20px; }
   .card__img {
-    width: 80px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     -o-object-fit: cover;
     object-fit: cover;
-    border-radius: 3px 0 0 0; }
+    border-radius: 3px 0 0 0;
+    background-color: gray; }
   .card__identite {
     width: 120px;
     padding: 5px 0 0 10px; }
@@ -638,7 +652,7 @@ button:focus {
     margin: 0 0 5px 0;
     overflow-wrap: break-word;
     font-size: 20px; }
-  .card__titre {
+  .card__title {
     margin: 10px; }
 
 .overflow {
