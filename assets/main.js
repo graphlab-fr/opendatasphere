@@ -548,6 +548,12 @@ var network = {
         },
         edges: {
             width: 2,
+            arrows: {
+                to: {
+                    enabled: true,
+                    scaleFactor: 1.5
+                }
+            },
             selectionWidth: 6,
             smooth: {
                 type: 'horizontal',
@@ -555,15 +561,11 @@ var network = {
             }
         },
         groups: {
-        		public: {shape: 'circularImage', color: {border: chooseColor('public')}},
-        		juridique: {shape: 'circularImage', color: {border: chooseColor('juridique')}},
-        		geographique: {shape: 'circularImage', color: {border: chooseColor('geographique')}},
-        		scientifique: {shape: 'circularImage', color: {border: chooseColor('scientifique')}},
-        		autre: {shape: 'circularImage', color: {border: chooseColor('autre')}}
-            //personne: {shape: 'image', color: {border: chooseColor('personne')}},
-            //organisme_public: {shape: 'image', color: {border: chooseColor('organisme_public')}},
-            //organisme_prive: {shape: 'image', color: {border: chooseColor('organisme_prive')}},
-            //outil: {shape: 'image', color: {border: chooseColor('outil')}}
+            public: {shape: 'circularImage', color: {border: chooseColor('public')}},
+            juridique: {shape: 'circularImage', color: {border: chooseColor('juridique')}},
+            geographique: {shape: 'circularImage', color: {border: chooseColor('geographique')}},
+            scientifique: {shape: 'circularImage', color: {border: chooseColor('scientifique')}},
+            autre: {shape: 'circularImage', color: {border: chooseColor('autre')}}
         },
         interaction: {hover:true}
     },
