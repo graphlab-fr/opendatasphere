@@ -188,7 +188,8 @@ button:focus {
   width: 100%;
   font-size: 14px;
   color: white;
-  white-space: nowrap; }
+  white-space: nowrap;
+  background-color: black; }
   .btn-group:first-child {
     margin: 0 2px 0 0; }
   .btn-group--large {

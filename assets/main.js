@@ -389,7 +389,8 @@ var filter = {
                 if (isActiveGroup) {
                     network.data.nodes.get({
                         filter: function (item) {
-                            if (item.group == group) {
+                            console.log(item);
+                            if (item.group == group || item.categorie == group) {
                                 network.data.nodes.update({id: item.id, hidden: true}) }
                         }
                     });
@@ -402,7 +403,7 @@ var filter = {
                 } else {
                     network.data.nodes.get({
                         filter: function (item) {
-                            if (item.group == group) {
+                            if (item.group == group || item.categorie == group) {
                                 network.data.nodes.update({id: item.id, hidden: false}) }
                         }
                     });
