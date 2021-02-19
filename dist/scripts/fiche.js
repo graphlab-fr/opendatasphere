@@ -6,6 +6,7 @@ var fiche = {
     toggle: document.querySelector('#fiche-toggle'),
     isOpen: false,
     fields: {
+        head: document.querySelector('#fiche-head'),
         lien: document.querySelector('#fiche-meta-lien'),
         img: document.querySelector('#fiche-meta-img'),
         label: document.querySelector('#fiche-meta-label'),
@@ -120,6 +121,9 @@ var fiche = {
             }
         }
     },
+    setColor: function(color) {
+        this.fields.head.style.backgroundColor = color;
+    },
     fill: function() {
         const nodeMetas = getNodeMetas(network.selectedNode)
         if (nodeMetas === false)  { return ; }
@@ -129,6 +133,7 @@ var fiche = {
         this.content.classList.add('fiche__content--visible');
 
         // remplissage métadonnées
+        this.setColor(chooseColor(nodeMetas.group));
         this.setMeta(nodeMetas.label, this.fields.label);
         this.setMeta(nodeMetas.title, this.fields.title);
         this.setImage(nodeMetas.image, nodeMetas.label);

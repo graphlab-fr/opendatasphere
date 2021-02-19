@@ -45,13 +45,13 @@
     &__identite {
         margin-bottom: 10px;
         display: flex;
-/*         color: white; */
-/*         background-color: black; */
+        color: white;
+        background-color: black;
     }
 
     &__img {
-    		display: none;
         @extend %shadow-1;
+    	display: none;
         cursor: pointer;
         border-radius: 2px;
         width: 150px;
