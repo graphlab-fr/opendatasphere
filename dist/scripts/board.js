@@ -10,6 +10,7 @@ var board = {
             var card = new Card;
             card.id = entity.id;
             card.label = entity.label;
+            card.color = chooseColor(entity.group);
             card.labelFirstLetter = entity.sortName.charAt(0);
             card.title = entity.title;
             card.img = entity.image;
@@ -28,6 +29,7 @@ function Card() {
     this.label = 'No name';
     this.labelFirstLetter = undefined;
     this.title = 'No title';
+    this.color = undefined;
     this.text = null;
     this.domElt = document.createElement('article');
 }
@@ -36,7 +38,7 @@ Card.prototype.inscribe = function(container) {
     this.domElt.classList.add('card');
     this.domElt.innerHTML = 
     `<div class="card__presentation">
-        <img class="card__img" src="${this.img}" alt="${this.label}">
+        <img class="card__img" src="${this.img}" alt="${this.label}" style="background-color: ${this.color};">
         <div class="card__identite">
             <h3 class="card__label">${this.label}</h3>
         </div>
