@@ -185,7 +185,6 @@ button:focus {
   padding: 6px 30px 6px 12px;
   margin: 0 4px;
   border-radius: 3px;
-  width: 100%;
   font-size: 14px;
   color: white;
   white-space: nowrap;
@@ -250,6 +249,7 @@ button:focus {
   top: 0px;
   left: 0px;
   display: flex;
+  flex-flow: row nowrap;
   justify-content: left;
   padding: 10px 20px 0 20px;
   width: 100%;
@@ -288,12 +288,15 @@ button:focus {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 100%; }
+  /*     width: 100%; */ }
   .navigation__list {
     display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-content: space-between;
     list-style: none;
     padding: unset;
-    margin: 0 20px 10px 0; }
+    margin: 0 3rem 0 0; }
   .navigation__link {
     cursor: pointer;
     position: relative;
@@ -305,8 +308,8 @@ button:focus {
     border: unset;
     height: unset; }
     .navigation__link:first-child {
-      padding: 5px 7px 5px 0;
-      margin: 0 5px 0 0; }
+      /*             padding: 5px 7px 5px 0; */
+      margin-bottom: 5px; }
     .navigation__link--active {
       text-decoration: underline; }
     .navigation__link:hover {
@@ -314,17 +317,23 @@ button:focus {
 
 .toolbar {
   display: flex;
-  justify-content: center; }
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: space-between;
+  flex-wrap: wrap; }
   .toolbar__label {
     font-size: 1.2em;
-    align-self: center; }
+    margin: 0 10px 0 0; }
   .toolbar__section {
     display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
     margin: 0 10px; }
     .toolbar__section:first-child {
       margin: 0; }
     .toolbar__section:last-child {
-      margin: 0 0 0 10px; }
+      margin: 10px 0 0 0; }
 
 .fiche__content {
   overflow: auto;
@@ -682,7 +691,7 @@ div#fiche-connexion {
   position: relative;
   background-color: #fff;
   padding: 30px;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 90px);
   overflow-y: auto;
   box-sizing: border-box; }
 

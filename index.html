@@ -119,7 +119,6 @@
             <div class="entete__identite" onclick="movement.goTo('reseau');">
                 <h1 class="title-site">Opendatasphère</h1>
             </div>
-<!-- FLO S'EST ARRETE LA ! -->
             <div class="search-box">
                 <label for="search" class="search-box__label"></label>
                 <input id="search" class="search-box__input" type="text" placeholder="Rechercher" role="search" autocomplete="off">
@@ -129,10 +128,36 @@
 
         <div class="entete__col">
             <nav class="navigation">
-                <ul class="navigation__list mb-2">
+                <ul class="navigation__list">
                     <li class="navigation__link navigation__link--active" data-section="reseau" data-lang-fr="Réseau" data-lang-en="">Réseau</li>
                     <li class="navigation__link" data-section="fiches" data-lang-fr="Fiches" data-lang-en="">Fiches</li>
                 </ul>
+            </nav>
+				</div>
+
+        <div class="entete__col">
+            <section class="toolbar || d-none d-xl-flex">
+            		<div class="toolbar__section">
+            			<h3 class="toolbar__label">Open data :</h3>
+									<button class="btn-group" data-group="public" data-lang-fr="Public" data-lang-en="">Public</button>
+									<button class="btn-group" data-group="juridique" data-lang-fr="Juridique" data-lang-en="">Juridique</button>
+									<button class="btn-group" data-group="geographique" data-lang-fr="Géographique" data-lang-en="">Géographique</button>
+									<button class="btn-group" data-group="scientifique" data-lang-fr="Scientifique" data-lang-en="">Scientifique</button>
+									<button class="btn-group" data-group="autre" data-lang-fr="Autre" data-lang-en="">Non-catégorisé</button>
+								</div>
+
+                <div class="toolbar__section">
+            			<h3 class="toolbar__label">Acteurs :</h3>
+									<button class="btn-group" data-group="personne" data-lang-fr="Personne" data-lang-en="">Personne</button>
+									<button class="btn-group" data-group="organisme_public" data-lang-fr="Organisme public" data-lang-en="">Organisme public</button>
+									<button class="btn-group" data-group="organisme_prive" data-lang-fr="Organisme privé" data-lang-en="">Organisme privé</button>
+									<button class="btn-group" data-group="outil" data-lang-fr="Outils" data-lang-en="">Outils</button>
+                </div>
+            </section>
+				</div>
+
+        <div class="entete__col">
+            <nav class="navigation">
                 <div class="d-flex align-items-baseline">
 <!--
                     <div class="lang-box">
@@ -141,31 +166,9 @@
                         <div id="lang-en" data-lang="En" class="lang-box__flag lang-box__flag~~en">EN</div>
                     </div>
  -->
-
-                    <button id="about-btn" class="navigation__link" data-lang-fr="À propos" data-lang-en="">À propos</button>
+                    <button id="about-btn" class="navigation__link" data-lang-fr="À propos" data-lang-en="">À propos</button>
                 </div>
             </nav>
-
-            <section class="toolbar || d-none d-xl-flex">
-            		<div class="toolbar__section">
-            			<h3 class="toolbar__label">Types d'open data :</h3>
-            		</div>
-
-                <div class="toolbar__section">
-                    <button class="btn-group" data-group="public" data-lang-fr="Public" data-lang-en="">Public</button>
-                    <button class="btn-group" data-group="juridique" data-lang-fr="Juridique" data-lang-en="">Juridique</button>
-                    <button class="btn-group" data-group="geographique" data-lang-fr="Géographique" data-lang-en="">Géographique</button>
-                    <button class="btn-group" data-group="scientifique" data-lang-fr="Scientifique" data-lang-en="">Scientifique</button>
-                    <button class="btn-group" data-group="autre" data-lang-fr="Autre" data-lang-en="">Non-catégorisé</button>
-                </div>
-
-                <div class="toolbar__section">
-                    <button class="btn-group" data-group="personne" data-lang-fr="Personne" data-lang-en="">Personne</button>
-                    <button class="btn-group" data-group="organisme_public" data-lang-fr="Organisme public" data-lang-en="">Organisme public</button>
-                    <button class="btn-group" data-group="organisme_prive" data-lang-fr="Organisme privé" data-lang-en="">Organisme privé</button>
-                    <button class="btn-group" data-group="outil" data-lang-fr="Outils" data-lang-en="">Outils</button>
-                </div>
-            </section>
         </div>
 
     </header>
@@ -234,14 +237,14 @@
                     <button class="btn-group" data-group="scientifique" data-lang-fr="Scientifique" data-lang-en="">Scientifique</button>
                     <button class="btn-group" data-group="autre" data-lang-fr="Autre" data-lang-en="">Non-catégorisé</button>
                 </div>
-<!-- 
+
                 <div>
-                    <button class="btn-group" data-group="Personne" data-lang-fr="Personne" data-lang-en="">Personne</button>
-                    <button class="btn-group" data-group="Organisme public" data-lang-fr="Organisme public" data-lang-en="">Organisme public</button>
-                    <button class="btn-group" data-group="Organisme privé" data-lang-fr="Organisme privé" data-lang-en="">Organisme privé</button>
-                    <button class="btn-group" data-group="Outil" data-lang-fr="Outil" data-lang-en="">Outil</button>
+									<button class="btn-group" data-group="personne" data-lang-fr="Personne" data-lang-en="">Personne</button>
+									<button class="btn-group" data-group="organisme_public" data-lang-fr="Organisme public" data-lang-en="">Organisme public</button>
+									<button class="btn-group" data-group="organisme_prive" data-lang-fr="Organisme privé" data-lang-en="">Organisme privé</button>
+									<button class="btn-group" data-group="outil" data-lang-fr="Outils" data-lang-en="">Outils</button>
                 </div>
- -->
+
             </main>
         </aside>
 
